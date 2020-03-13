@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Player Pages</title>
+  </head>
+  <body>
+    <h1>INTER PLAYERS</h1>
+    <table border="1" bordercolor="navy">
+      <thead>
+        <tr>
+          <th>NAME</th>
+          <th>NUMBER</th>
+          <th>POSITION</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="player : ${players}">
+          <td th:text="${player.name}"></td>
+          <td th:text="${player.number}"></td>
+          <td th:text="${player.position}"></td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <ul>
+        <li style="display:inline;">
+          <span th:if="${page.first}">&lt;&lt;前</span>
+          <a
+            th:if="${!page.first}"
+            th:href="@{/pages/players(page = ${page.number} - 1)}"
+          >
+            &lt;&lt;前
+          </a>
+        </li>
+        <li
+          th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}"
+          style="display:inline; margin-left:10px;"
+        >
+          <span th:if="${i} == ${page.number}" th:text="${i + 1}">1</span>
+          <a
+            th:if="${i} != ${page.number}"
+            th:href="@{/pages/players(page = ${i})}"
+          >
+            <span th:text="${i+1}">1</span>
+          </a>
+        </li>
+        <li style="display:inline; margin-left:10px;">
+          <span th:if="${page.last}">次&gt;&gt;</span>
+          <a
+            th:if="${!page.last}"
+            th:href="@{/pages/players(page = (${page.number} + 1))}"
+          >
+            次&gt;&gt;
+          </a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

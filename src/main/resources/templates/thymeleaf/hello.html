@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Thymeleaf Study</title>
+  </head>
+  <body>
+    <div>
+      <!-- #string -->
+      <div th:text="${#strings.isEmpty(stringNull)}"></div>
+      <div th:text="${#strings.isEmpty(string)}"></div>
+      <div th:text="${#strings.defaultString(stringNull, 'default')}"></div>
+      <div th:text="${#strings.contains(string,'el')}"></div>
+      <div th:text="${#strings.containsIgnoreCase(string,'EL')}"></div>
+      <div th:text="${#strings.prepend(string,'prefix:')}"></div>
+      <div th:text="${#strings.append(string,':suffix')}"></div>
+      <div th:text="${#strings.toUpperCase(string)}"></div>
+      <div th:text="${#strings.toLowerCase(string)}"></div>
+      <div th:text="${#strings.arrayJoin(stringArray,',')}"></div>
+      <div th:text="${#strings.listJoin(stringList,',')}"></div>
+      <div th:text="${#strings.length(string)}"></div>
+      <div th:text="${#strings.abbreviate(string,4)}"></div>
+      <div th:text="${#strings.equals(string, STRING)}"></div>
+      <div th:text="${#strings.equalsIgnoreCase(string, STRING)}"></div>
+      <!-- #number -->
+      <div th:text="${#numbers.formatInteger(number,5)}"></div>
+      <div th:text="${#numbers.formatInteger(number,3,'COMMA')}"></div>
+      <!-- #arrays -->
+      <div th:text="${#arrays.toArray(stringArray)}"></div>
+      <div th:text="${#arrays.toArray(stringList)}"></div>
+    </div>
+  </body>
+</html>
